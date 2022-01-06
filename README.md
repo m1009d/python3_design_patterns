@@ -1,4 +1,4 @@
-# python3 design patterns
+# Python3 design patterns
 
 Learning Design patterns in Python3
 
