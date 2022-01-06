@@ -5,13 +5,18 @@
 Try to implement the Duck example from the youtube video:
 https://www.youtube.com/watch?v=v9ejT8FO-7I
 
+NOTE: display behavior is not implemented because it is
+essentially the same as other behaviors like flying and
+quacking.
+
 Other materials used:
 https://refactoring.guru/design-patterns/strategy
 """
 
 from abc import ABC, abstractmethod
 
-
+# Let's create abstract classes first which implement
+# different Duck behaviours.
 class IFlyBehavior(ABC):
     """Flying behavior."""
 
@@ -30,6 +35,8 @@ class IQuackBehavior(ABC):
         return
 
 
+# Now we need to implement the Strategy - classes which inherit from the
+# Behavior abstract classes and implement the neccessary methods.
 class SimpleFlyingStrategy(IFlyBehavior):
     """Strategy pattern - inherits from IFlyBehavior."""
 
@@ -63,6 +70,7 @@ class NoQuackStrategy(IQuackBehavior):
         return 'not quack'
 
 
+# This is our main class (context) from which we create instances.
 class Duck:
     """
     The original object, called context, holds a reference to a strategy object
