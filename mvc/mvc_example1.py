@@ -22,7 +22,7 @@ class Model:
         try:
             num = int(num)
         except ValueError:
-            return 1, 'Invalid output1'
+            return 1, 'Invalid output'
         if num == 0:
             return 1, '0 index is not supported'
         if num < 0:
@@ -70,7 +70,8 @@ class View:
 
         1 - Select a quote
         2 - Add a new quote
-        3 - Delete an already existing quote: ''')
+        3 - Delete an already existing quote
+        4 - Exit: ''')
 
     @property
     def select_quote(self) -> str:
@@ -110,9 +111,12 @@ class Controller:
             if user_choice == 1:
                 code, msg = self.model.get_quote(self.view.select_quote)
             elif user_choice == 2:
-                    code, msg = self.model.add_quote(self.view.add_quote)
+                code, msg = self.model.add_quote(self.view.add_quote)
             elif user_choice == 3:
-                    code, msg = self.model.del_quote(self.view.del_quote)
+                code, msg = self.model.del_quote(self.view.del_quote)
+            elif user_choice == 4:
+                self.view.show('Bye')
+                break
             else:
                 self.view.error('Invalid input')
                 continue
