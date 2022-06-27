@@ -12,7 +12,6 @@ Publisher "humidity sensor 2" has data 80.0
 """
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
 
 
 class Group:
@@ -25,23 +24,6 @@ class Group:
 
     def __repr__(self) -> str:
         return self.name
-
-
-class Sensor(ABC):
-    """Abstract Sensor class which pushes to the observer when some data value changes."""
-
-    def __init__(self, name: str) -> None:
-        self.name = name
-
-    def __str__(self) -> str:
-        return self.name
-
-    def __repr__(self) -> str:
-        return f'"{self.name}"'
-
-    @abstractmethod
-    def data(self) -> float:
-        """Get/Set a sensor value."""
 
 
 class Publisher:
